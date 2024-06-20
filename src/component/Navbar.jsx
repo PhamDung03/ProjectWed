@@ -22,7 +22,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { isLoggedIn, logout } = useUser();
   const cart = useSelector((state) => state?.cart.cart) || [];
-
   const onClickUser = () => {
     navigate("/login");
   };

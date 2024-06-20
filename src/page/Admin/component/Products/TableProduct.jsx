@@ -41,6 +41,7 @@ const TableProduct = () => {
   const preData = useRef();
 
   // [Get] api product
+
   useEffect(() => {
     apiGetProducts(metaData.page, metaData.limit)
       .then((res) => {

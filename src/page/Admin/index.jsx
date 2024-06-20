@@ -22,10 +22,16 @@ const tabs = [
 
 const Admin = () => {
   const [select, setSelect] = useState(0);
+<<<<<<< HEAD
   // const { user } = useUser();
   const { isLoggedIn } = useUser();
 
   if (!isLoggedIn) {
+=======
+  const { user } = useUser();
+
+  if (!user) {
+>>>>>>> 5a5be05aa5c692cc4b6da0abc0f115d68b56c9e3
     return <Navigate to={"/login"} />;
   }
 

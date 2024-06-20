@@ -16,6 +16,7 @@ const DrawerList = (props) => {
   }, 0);
 
   console.log("Total: ", total);
+
   const handleClose = ({ target }) => {
     const isClose =
       ["svg", "path"].includes(target.tagName) ||
@@ -92,6 +93,7 @@ const DrawerList = (props) => {
             <button className="btn_add" onClick={onClickCheckOut}>
               Tiến hành đặt hàng
             </button>
+
             <Box className="LinkProductDetail">
               <Link to={"/cart"}>Xem chi tiết giỏ hàng {">>"} </Link>
             </Box>

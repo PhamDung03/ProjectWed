@@ -72,7 +72,6 @@ const ListProductShop = () => {
   ];
 
   const [selectPrice, setSelectPrice] = useState(-1);
-
   const prices = [
     {
       name: "0 - 100,000đ",
@@ -198,6 +197,7 @@ const ListProductShop = () => {
                 ))}
               </Accordion>
               {/* Giá tiền */}
+
               <Accordion
                 className="filter"
                 expanded={isExpandPrice}

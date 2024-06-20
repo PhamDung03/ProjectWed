@@ -83,7 +83,6 @@ const Banner = () => {
               </Container>
             </Stack>
           </SwiperSlide>
-
           <SwiperSlide>
             <Stack className="item item_hero3">
               <Container>

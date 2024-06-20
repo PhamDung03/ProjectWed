@@ -4,19 +4,31 @@ import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { formatImg } from "../utils/imgHelpers";
 import { onRemoveItem } from "../redux/actions/cartActions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const DrawerList = (props) => {
   const { close } = props;
   const dispatch = useDispatch();
   const cart = useSelector((state) => state?.cart?.cart) || [];
+  const navigate = useNavigate();
+
+  const total = cart.reduce((a, b) => {
+    return a + Number(b.productPrice) * b.quantity;
+  }, 0);
+
+  console.log("Total: ", total);
   const handleClose = ({ target }) => {
     const isClose =
       ["svg", "path"].includes(target.tagName) ||
       target?.className?.includes("drawer-container");
     isClose && close();
   };
+
   const onClickDelete = (product) => {
     dispatch(onRemoveItem(product));
+  };
+
+  const onClickCheckOut = () => {
+    navigate("/checkout");
   };
 
   return (
@@ -75,9 +87,11 @@ const DrawerList = (props) => {
               margin={"20px 0"}
             >
               <b>Tổng tiền tạm tính</b>
-              <b>2,756,000₫</b>
+              <b>{`${total.toLocaleString()} VNĐ`}</b>
             </Stack>
-            <button className="btn_add">Tiến hành đặt hàng</button>
+            <button className="btn_add" onClick={onClickCheckOut}>
+              Tiến hành đặt hàng
+            </button>
             <Box className="LinkProductDetail">
               <Link to={"/cart"}>Xem chi tiết giỏ hàng {">>"} </Link>
             </Box>

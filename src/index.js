@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Shop from "./page/Shop/index";
 import Blogs from "./page/Blogs";
 import AboutUs from "./page/AboutUs";
+
 const router = createBrowserRouter([
   {
     path: "/",

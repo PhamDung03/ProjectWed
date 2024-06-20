@@ -20,15 +20,16 @@ import img from "../img/LogoShop.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useUser();
-
+  const { isLoggedIn, logout } = useUser();
   const cart = useSelector((state) => state?.cart.cart) || [];
+
   const onClickUser = () => {
     navigate("/login");
   };
 
   const onClickLogout = () => {
-    setUser();
+    logout();
+    navigate("/login");
   };
 
   const onClickCart = () => {
@@ -44,7 +45,7 @@ const Navbar = () => {
     {
       name: "Admin",
       path: "/admin",
-      public: !!user,
+      public: isLoggedIn,
     },
     {
       name: "Shop",
@@ -118,7 +119,7 @@ const Navbar = () => {
                       <MdOutlineShoppingCart />
                     </StyledBadge>
                   </IconButton>
-                  {!user ? (
+                  {!isLoggedIn ? (
                     <IconButton onClick={onClickUser}>
                       <FaRegCircleUser style={{ fontSize: 24 }} />
                     </IconButton>

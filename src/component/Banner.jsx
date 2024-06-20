@@ -1,5 +1,6 @@
 import heroBanner from "../img/hero-2.jpg";
 import heroBanner1 from "../img/hero-1.jpg";
+import heroBanner2 from "../img/hero-3.png";
 import iconNext from "../img/arrow-right.png";
 import iconPrev from "../img/prev.png";
 import { styled, Box, Stack, Container, Grid } from "@mui/material";
@@ -82,6 +83,30 @@ const Banner = () => {
               </Container>
             </Stack>
           </SwiperSlide>
+
+          <SwiperSlide>
+            <Stack className="item item_hero3">
+              <Container>
+                <Grid container>
+                  <Grid item xs={5} lg={4} md={5} className="item_content">
+                    <div className="item_content-text">
+                      <h6>Summer Collection</h6>
+                      <h2>Fall - Winter Collections 2030</h2>
+                      <p>
+                        A specialist label creating luxury essentials. Ethically
+                        crafted with an unwavering commitment to exceptional
+                        quality.
+                      </p>
+                      <button>
+                        Shop now <GrLinkNext />
+                      </button>
+                    </div>
+                  </Grid>
+                  <Grid xs={7} item></Grid>
+                </Grid>
+              </Container>
+            </Stack>
+          </SwiperSlide>
         </Swiper>
       </Box>
     </StyledBanner>
@@ -94,11 +119,15 @@ const StyledBanner = styled(Box)(({ theme }) => ({
     width: "1519.2px",
   },
   ".item_hero1": {
-    backgroundImage: `url(${heroBanner})`,
+    backgroundImage: `url(${heroBanner2})`,
   },
 
   ".item_hero2": {
     backgroundImage: `url(${heroBanner1})`,
+  },
+
+  ".item_hero3": {
+    backgroundImage: `url(${heroBanner})`,
   },
 
   ".item": {

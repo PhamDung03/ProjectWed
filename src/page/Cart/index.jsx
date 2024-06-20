@@ -14,6 +14,7 @@ const Cart = () => {
   const cart = useSelector((state) => state?.cart?.cart) || [];
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const cartTotal = cart.reduce((a, b) => {
     return a + Number(b.productPrice) * b.quantity;
   }, 0);

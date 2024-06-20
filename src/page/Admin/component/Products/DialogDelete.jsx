@@ -1,12 +1,20 @@
 import { Stack, Box, Button, styled } from "@mui/material";
 import { apiDeleteProduct } from "../../../../services/product";
+import { toast } from "react-toastify";
 
 const DialogDelete = (props) => {
   const { onCloseDeleteDialog, refreshProducts, selectdProduct } = props;
   const onSubmitDelete = () => {
     apiDeleteProduct(selectdProduct?.productId)
-      .then(onCloseDeleteDialog(), refreshProducts())
-      .catch((err) => console.log(err));
+      .then(() => {
+        onCloseDeleteDialog();
+        refreshProducts();
+        toast.success("Xóa sản phẩm thành công!");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Xóa sản phẩm thất bại!");
+      });
   };
   return (
     <StyledDialogDeleteProduct>

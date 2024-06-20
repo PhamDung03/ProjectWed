@@ -12,19 +12,28 @@ import store from "../../redux/store";
 import Categories from "./Component/Categories";
 import LatestNews from "./Component/LatestNews";
 import Instagram from "./Component/Instagram";
-
+// import { useNavigate } from "react-router-dom";
+// import { useUser } from "../../providers/user-provider";
 const Home = () => {
   const [showDialogProduct, setShowDialogProduct] = useState(false);
-
+  // const navigate = useNavigate();
+  // const { setUser } = useUser();
   const onCloseDialogProduct = () => {
     setShowDialogProduct(false);
   };
 
   const [scroll] = useState("body");
-
   store.subscribe(() =>
     setShowDialogProduct(store?.getState()?.showDialogBuy.showDialogBuy)
   );
+
+  // useEffect(() => {
+  //   const isLoggedIn = localStorage.getItem("isLoggedIn");
+  //   if (isLoggedIn === "true") {
+  //     setUser({ name: "PD" });
+  //     navigate("/");
+  //   }
+  // }, [setUser, navigate]);
 
   return (
     <>

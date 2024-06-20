@@ -92,7 +92,7 @@ const TableAdmin = () => {
   const handleSearch = (e) => {
     setSearchText(e.target.value);
     const newAccounts = preData.current.filter((account) =>
-      account.email.includes(e.target.value)
+      account.email.toLowerCase().includes(e.target.value)
     );
     setAccounts(newAccounts);
   };

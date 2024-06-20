@@ -54,6 +54,7 @@ const DialogEditProduct = (props) => {
       productImage: selectdProduct?.productImage || "",
       ratingStar: selectdProduct?.ratingStar || 0,
       productPrice: selectdProduct?.productPrice || "",
+      categoryId: selectdProduct?.categoryId || "",
     },
     onSubmit: selectdProduct ? onSubmitUpdateProduct : onSubmitCreateProduct,
   });
@@ -62,10 +63,10 @@ const DialogEditProduct = (props) => {
     apiGetCategories()
       .then((res) => {
         setShowcategories(res.data.data || []);
-        formik.setFieldValue("categoryId", selectdProduct?.categoryId);
+        formik.setFieldValue("categoryId", selectdProduct?.categoryId || "");
       })
       .catch((err) => console.log(err));
-  });
+  }, [selectdProduct]);
 
   return (
     <StyledDialogEdit>

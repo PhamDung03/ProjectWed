@@ -1,11 +1,18 @@
 import { Stack, Button, styled, Box } from "@mui/material";
 import { apiDeleteAccount } from "../../../../services/account";
+import { toast } from "react-toastify";
 const DialogDelete = (props) => {
   const { onCloseDeleteDialog, selectedAccount, refreshAccounts } = props;
   const onSubmitDelete = () => {
     apiDeleteAccount(selectedAccount?.accountId)
-      .then(onCloseDeleteDialog(), refreshAccounts())
-      .catch((err) => console.log(err));
+      .then(() => {
+        onCloseDeleteDialog();
+        refreshAccounts();
+        toast.success("Xóa tài khoản thành công!");
+      })
+      .catch((err) => {
+        toast.error("Xóa tài khoản thất bại");
+      });
   };
 
   return (

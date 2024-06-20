@@ -8,6 +8,7 @@ import { object, string } from "yup";
 import { login } from "../../services/account";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../providers/user-provider";
+// import { useContext } from "react";
 
 let loginSchema = object({
   username: string().required(),
@@ -15,14 +16,17 @@ let loginSchema = object({
 });
 
 const Login = () => {
-  const { setUser } = useUser();
+  // const { setUser } = useUser();
   const navigate = useNavigate();
+  const { login: setLoginState } = useUser();
+  // Login
   const onSubmitLogin = (values) => {
     login(values)
       .then((res) => {
-        console.log(res);
         navigate("/");
-        setUser({name: "PD"});
+        // setUser({ name: "PD" });
+        setLoginState(true);
+        // localStorage.setItem("isLoggedIn", "true");
       })
       .catch((err) => {
         formik.setErrors({ root: err?.response?.data?.msg });

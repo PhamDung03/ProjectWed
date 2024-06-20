@@ -35,10 +35,12 @@ const TableProduct = () => {
     limit: 5,
     page: 1,
   });
+
   const [searchText, setSearchText] = useState("");
 
   const preData = useRef();
 
+  // [Get] api product
   useEffect(() => {
     apiGetProducts(metaData.page, metaData.limit)
       .then((res) => {
@@ -80,11 +82,19 @@ const TableProduct = () => {
     setReloadProducts(!reloadProducts);
   };
 
+  const removeDiacritics = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  };
+
   const handlSearch = (e) => {
-    setSearchText(e.target.value);
+    const searchText = removeDiacritics(e.target.value.toLowerCase());
+
+    setSearchText(searchText);
+
     const newProducts = preData.current.filter((product) =>
-      product.productName.includes(e.target.value)
+      removeDiacritics(product.productName.toLowerCase()).includes(searchText)
     );
+
     setProducts(newProducts);
   };
 
